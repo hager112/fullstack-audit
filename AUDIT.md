@@ -27,7 +27,7 @@
 | Punkt | Poäng | Kommentar |
 |---|---|---|
 | README räcker för att starta | 1 | Fungerar, men saknar länkar och info om två terminaler |
-| bin, obj, node_modules utanför git | 2 | git status visar dem inte |
+| bin, obj, node_modules utanför git | 2 | git status visar dem inte, inte heller databasfilen starter.db (bra, den   innehåller användarnas data)|
 | Inga lösenord i koden | 2 | appsettings.json innehåller inga hemligheter |
 | Commit-historiken är en berättelse | 1 | Bara 1 commit ("Initial commit"), för lite att bedöma |
 | Samma formatering överallt | 2 | dotnet format och prettier --check går igenom |

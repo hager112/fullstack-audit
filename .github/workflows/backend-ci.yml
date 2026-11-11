@@ -1,0 +1,39 @@
+name: Backend CI
+
+# kör bara när en PR ändrar nåt i backend
+on:
+  pull_request:
+    paths:
+      - "backend/**"
+
+# får bara läsa koden
+permissions:
+  contents: read
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest   # ny ren linux-dator varje gång
+
+    defaults:
+      run:
+        working-directory: backend
+
+    steps:
+      - uses: actions/checkout@v7   # hämtar koden
+
+      - uses: actions/setup-dotnet@v6   # installerar .net 10
+        with:
+          dotnet-version: "10.0.x"
+
+      - name: Restore
+        run: dotnet restore
+
+      # formatering först, går snabbast att faila
+      - name: Check formatting
+        run: dotnet format --verify-no-changes --no-restore
+
+      - name: Build
+        run: dotnet build --no-restore --configuration Release
+
+      - name: Test
+        run: dotnet test --no-build --configuration Release

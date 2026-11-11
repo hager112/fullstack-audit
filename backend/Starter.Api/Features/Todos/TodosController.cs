@@ -11,7 +11,7 @@ public sealed class TodosController(TodoService service) : ControllerBase
     [HttpGet]
     public async Task<ActionResult<IReadOnlyList<TodoResponse>>> List(CancellationToken cancellationToken)
     {
-        var result = await service.ListAsync(cancellationToken);
+                  var result = await service.ListAsync(cancellationToken);
         return Ok(result.Data);
     }
 
